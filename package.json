@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "lj",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/lamesensei/holdnaut-interview/issues"
   },
-  "homepage": "https://github.com/lamesensei/holdnaut-interview#readme"
+  "homepage": "https://github.com/lamesensei/holdnaut-interview#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
