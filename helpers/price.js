@@ -1,4 +1,5 @@
 import axios from "axios";
+import currency from "currency.js";
 
 const getLatestPrice = (priceData) => priceData.data.last;
 
@@ -31,5 +32,5 @@ export const calculateBalance = async (userBalance) => {
     balance += getLatestPrice(btcData) * userBalance.BTC;
   }
 
-  return balance;
+  return currency(balance).format();
 };
