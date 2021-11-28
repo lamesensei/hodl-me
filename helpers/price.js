@@ -1,7 +1,7 @@
 import axios from "axios";
 import currency from "currency.js";
 
-const getLatestPrice = (priceData) => priceData.data.last;
+const getLatestPrice = (priceData) => priceData?.data?.last;
 
 const getEthPrices = async () => {
   try {

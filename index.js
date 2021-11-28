@@ -16,7 +16,8 @@ app.get("/user/:userId/balances", async (req, res) => {
 
     return res.json(balances);
   }
-  res.send("No user");
+  res.status(404);
+  res.send(`No user with id ${req.params.userId}`);
 });
 
 app.get("/", (req, res) => {
