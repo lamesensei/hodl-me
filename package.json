@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "mocha": "^8.3.2"
   },
-  "type": "commonjs",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lamesensei/holdnaut-interview.git"
