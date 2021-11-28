@@ -50,13 +50,13 @@ const userBalances = {
 
 ## Questions
 __1. (Optional) If you didn’t have time to complete your intended design, what else would you have done?__
-> ANSWER
+> Worked mostly with opinionated or more structured frameworks like Laravel(PHP) and Phoenix(Elixir). So having to work with express.js due to a general lack of structure. Wanted to do a MVC but not sure how to make/mock a users model. Also not happy with how I'm handling errors with regards to the external api requests. Probably would also want to add middleware usage to handle id check but decided against overengineering.
 
 __2. Which took the most time? What did you find most difficult?__
-> ANSWER
+> Tests. Not familiar with chai and general node.js quirks. Not sure whether and how to mock API tests in node/chai. Also, had issues running the repo on local. Modules/export/require/cjs (compared to working in React) messes with my head (somehow to got it to work after changing my node version). 
 
 __3. If we wanted the balance to update on the frontend more often (10 times per second), how would you improve the current system to handle this?__
-> ANSWER
+> Websockets? Frontend im guessing websockets or Graphql subscription.
 
 __4. How did you find the test overall? If you have any suggestions on how we can improve the test, we'd love to hear them!__
-> ANSWER
+> Pretty basic test. Once again not a fan of express.js lack of structure -- but that is on express.js. Perhaps I think some specifications about the endpoint would be good (are we returning a string? object? is user_id a query param? what). 
