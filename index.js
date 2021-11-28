@@ -16,18 +16,37 @@ const userBalances = {
   },
 };
 
-app.get("/user/:userId/balances", async (req, res) => {
-  const user = userBalances[req.params.userId];
-  if (user) {
-    const btcData = await axios.get(
-      "https://www.bitstamp.net/api/v2/ticker/btcusd/"
-    );
+const getLatestPrice = (priceData) => priceData.data.last;
+
+const calculateBalance = async (userBalance) => {
+  let balance = 0;
+
+  if (userBalance.ETH) {
     const ethData = await axios.get(
       "https://www.bitstamp.net/api/v2/ticker/ethusd/"
     );
+
+    balance += getLatestPrice(ethData) * userBalance.ETH;
+  }
+
+  if (userBalance.BTC) {
+    const btcData = await axios.get(
+      "https://www.bitstamp.net/api/v2/ticker/btcusd/"
+    );
+
+    balance += getLatestPrice(btcData) * userBalance.BTC;
+  }
+
+  return balance;
+};
+
+app.get("/user/:userId/balances", async (req, res) => {
+  const userBalance = userBalances[req.params.userId];
+
+  if (userBalance) {
     const balances = {
-      totalBalanceUsd: user.BTC * btcData.data.last + user.ETH * ethData.data.last,
-      ...user,
+      totalBalanceUsd: await calculateBalance(userBalance),
+      ...userBalance,
     };
 
     return res.json(balances);
