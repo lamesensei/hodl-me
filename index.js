@@ -1,4 +1,5 @@
 import express from "express";
+import axios from "axios";
 const app = express();
 const port = 3000;
 
@@ -15,10 +16,21 @@ const userBalances = {
   },
 };
 
-app.get("/user/:userId/balances", (req, res) => {
+app.get("/user/:userId/balances", async (req, res) => {
   const user = userBalances[req.params.userId];
   if (user) {
-    res.json(user);
+    const btcData = await axios.get(
+      "https://www.bitstamp.net/api/v2/ticker/btcusd/"
+    );
+    const ethData = await axios.get(
+      "https://www.bitstamp.net/api/v2/ticker/ethusd/"
+    );
+    const balances = {
+      totalBalanceUsd: user.BTC * btcData.data.last + user.ETH * ethData.data.last,
+      ...user,
+    };
+
+    return res.json(balances);
   }
   res.send("No user");
 });
