@@ -50,13 +50,15 @@ const userBalances = {
 
 ## Questions
 __1. (Optional) If you didn’t have time to complete your intended design, what else would you have done?__
-> Worked mostly with opinionated or more structured frameworks like Laravel(PHP) and Phoenix(Elixir). So having to work with express.js due to a general lack of structure. Wanted to do a MVC but not sure how to make/mock a users model. Also not happy with how I'm handling errors with regards to the external api requests. Probably would also want to add middleware usage to handle id check but decided against overengineering.
+> I would have like to have a better error handling flow and more MVC like structure. Probably use express router and make use of middleware to handle the "user" retrieval.
 
 __2. Which took the most time? What did you find most difficult?__
-> Tests. Not familiar with chai and general node.js quirks. Not sure whether and how to mock API tests in node/chai. Also, had issues running the repo on local. Modules/export/require/cjs (compared to working in React) messes with my head (somehow to got it to work after changing my node version). 
+> - Testing took awhile because of I was not familiar Chai/Mocha. Designing the test was also annoying due to the general lack of structure for express.js. (I'm used to rails-like frameworks like Laravel, Phoenix). I don't even think my tests are correct -- I think external apis should be mocked?
+> - Initially getting the app to start on my local env took awhile. I will admit that the whole commonjs/es6 modules thing boggles me (compared to working with react). Eventually got it working with a higher nodejs version.
+
 
 __3. If we wanted the balance to update on the frontend more often (10 times per second), how would you improve the current system to handle this?__
-> Websockets? Frontend im guessing websockets or Graphql subscription.
+> Websockets? Frontend I'm guessing websockets or Graphql subscription.
 
 __4. How did you find the test overall? If you have any suggestions on how we can improve the test, we'd love to hear them!__
-> Pretty basic test. Once again not a fan of express.js lack of structure -- but that is on express.js. Perhaps I think some specifications about the endpoint would be good (are we returning a string? object? is user_id a query param? what). 
+> I think the test is pretty basic. The instructions are clear. I think that there should be more specifics (object? string? etc) on the desired outcome. 
